@@ -5,6 +5,7 @@ from app.main import app
 client = TestClient(app)
 
 def test_root_returns_200():
+    # Just test if the root path exists (returns 200)
     response = client.get("/")
     assert response.status_code == 200
 
