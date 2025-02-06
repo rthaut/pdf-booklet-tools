@@ -1,8 +1,8 @@
-name: Fly.io Deploy
+name: Deploy to Fly.io]
 
 on:
   workflow_run:
-    workflows: ["Run Tests"]
+    workflows: ["Tests"]
     types:
       - completed
     branches:

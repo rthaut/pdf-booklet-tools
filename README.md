@@ -2,6 +2,9 @@
 
 > A web application for manipulating PDF booklets. Built with React, FastAPI, and deployed on Fly.io.
 
+[![Tests](https://github.com/rthaut/pdf-booklet-tools/actions/workflows/tests.yml/badge.svg)](https://github.com/rthaut/pdf-booklet-tools/actions/workflows/tests.yml)
+[![Deploy to Fly.io](https://github.com/rthaut/pdf-booklet-tools/actions/workflows/fly.yml/badge.svg)](https://github.com/rthaut/pdf-booklet-tools/actions/workflows/fly.yml)
+
 ## Features
 
 - Swap PDF halves for correct booklet printing
