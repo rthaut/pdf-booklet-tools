@@ -1,6 +1,6 @@
 # PDF Booklet Tool
 
-A web application for manipulating PDF booklets. Built with React, FastAPI, and deployed on Fly.io.
+> A web application for manipulating PDF booklets. Built with React, FastAPI, and deployed on Fly.io.
 
 ## Features
 
@@ -10,6 +10,10 @@ A web application for manipulating PDF booklets. Built with React, FastAPI, and 
 - Rate-limited API
 - Continuous deployment
 
+## Deployment
+
+The application automatically deploys to [Fly.io](https://fly.io/) when changes are pushed to the main branch and all tests pass.
+
 ## Development
 
 ### Prerequisites
@@ -17,14 +21,15 @@ A web application for manipulating PDF booklets. Built with React, FastAPI, and 
 - Python 3.9+
 - Node.js 22+
 - poppler-utils
+  - On Windows: <https://github.com/oschwartz10612/poppler-windows/releases/>
 
 ### Local Setup
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-    cd YOUR_REPO_NAME
+    git clone https://github.com/rthaut/pdf-booklet-tools.git
+    cd pdf-booklet-tools
     ```
 
 1. Set up the backend:
@@ -34,6 +39,7 @@ A web application for manipulating PDF booklets. Built with React, FastAPI, and 
     python -m venv venv
     source venv/bin/activate  # On Windows: .\venv\Scripts\activate
     pip install -r requirements.txt
+    pip install -r requirements-test.txt
     ```
 
 1. Set up the frontend:
@@ -66,10 +72,6 @@ pytest
 cd frontend
 npm test
 ```
-
-## Deployment
-
-The application automatically deploys to Fly.io when changes are pushed to the main branch.
 
 ## License
 
