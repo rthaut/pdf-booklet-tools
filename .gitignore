@@ -4,4 +4,4 @@
 !.env.example
 
 # Fly.io
-fly.toml
+# fly.toml # including this file is necessary for deployment via github actions
