@@ -20,9 +20,16 @@ jobs:
         with:
           python-version: '3.9'
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
+          python --version
+          pip --version
           pip install -r backend/requirements.txt
           pip install -r backend/requirements-test.txt
 
@@ -31,6 +38,9 @@ jobs:
         run: pytest
         env:
           PYTHONPATH: ${PYTHONPATH}:${PWD}
+
+      - name: Run backend smoke test
+        run: python backend/scripts/smoke_process_pdf.py
   test-frontend:
     name: Frontend Tests
     runs-on: ubuntu-latest
@@ -46,8 +56,20 @@ jobs:
 
       - name: Install Node.js dependencies
         working-directory: ./frontend
-        run: npm ci
+        run: |
+          node --version
+          npm --version
+          npm config list
+          npm ci
 
       - name: Run frontend tests
         working-directory: ./frontend
         run: npm test
+
+      - name: Build frontend
+        working-directory: ./frontend
+        run: npm run build
+
+      - name: Run frontend smoke test
+        working-directory: ./frontend
+        run: npm run test:smoke

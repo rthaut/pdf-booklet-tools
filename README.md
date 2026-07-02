@@ -68,12 +68,19 @@ The application automatically deploys to [Fly.io](https://fly.io/) when changes 
 
 ```bash
 # Backend tests
-cd backend
-pytest
+(cd backend && pytest)
 
 # Frontend tests
-cd frontend
-npm test
+(cd frontend && npm test)
+
+# Frontend smoke test for the PDF upload/process/download path
+(cd frontend && npm run test:smoke)
+
+# Backend smoke test for PDF processing endpoints
+python backend/scripts/smoke_process_pdf.py
+
+# Backend smoke test PowerShell helper
+pwsh ./scripts/smoke-backend.ps1
 ```
 
 ## License

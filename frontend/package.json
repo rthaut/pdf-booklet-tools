@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
+    "test:smoke": "node scripts/smoke-report.mjs && vitest run src/App.smoke.test.tsx",
     "test:watch": "vitest"
   },
   "dependencies": {
