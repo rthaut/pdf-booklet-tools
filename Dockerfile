@@ -11,7 +11,7 @@ COPY frontend/ ./
 RUN npm run build
 
 # Build backend
-FROM python:3.9-slim
+FROM python:3.13-slim
 WORKDIR /app
 
 # Set production environment variables
