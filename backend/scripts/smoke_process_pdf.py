@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 from fastapi.testclient import TestClient
-from PyPDF2 import PdfReader, PdfWriter
+from pypdf import PdfReader, PdfWriter
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
 if str(BACKEND_DIR) not in sys.path:
