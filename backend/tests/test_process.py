@@ -3,7 +3,7 @@ import io
 from fastapi.testclient import TestClient
 from pdf2image import convert_from_bytes
 from PIL import Image
-from PyPDF2 import PdfReader
+from pypdf import PdfReader
 
 from app.main import app
 from app.pdf_utils import get_poppler_path
