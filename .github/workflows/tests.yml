@@ -41,6 +41,22 @@ jobs:
 
       - name: Run backend smoke test
         run: python backend/scripts/smoke_process_pdf.py
+
+      - name: Check backend server startup
+        working-directory: ./backend
+        run: |
+          uvicorn app.main:app --host 127.0.0.1 --port 8080 &
+          server_pid=$!
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:8080/openapi.json; then
+              kill "$server_pid"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Backend server did not respond on /openapi.json"
+          kill "$server_pid" || true
+          exit 1
   test-frontend:
     name: Frontend Tests
     runs-on: ubuntu-latest
@@ -61,6 +77,14 @@ jobs:
           npm --version
           npm config list
           npm ci
+
+      - name: Lint frontend
+        working-directory: ./frontend
+        run: npm run lint
+
+      - name: Typecheck frontend
+        working-directory: ./frontend
+        run: npm run typecheck
 
       - name: Run frontend tests
         working-directory: ./frontend
